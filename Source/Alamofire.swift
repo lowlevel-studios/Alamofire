@@ -87,8 +87,10 @@ func URLRequest(
         mutableURLRequest = request
     } else if let request = URLString as? NSURLRequest {
         mutableURLRequest = request.URLRequest
+    } else if let url = NSURL(string: URLString.URLString) {
+        mutableURLRequest = NSMutableURLRequest(URL: url)
     } else {
-        mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URLString.URLString)!)
+        mutableURLRequest = NSMutableURLRequest()
     }
 
     mutableURLRequest.HTTPMethod = method.rawValue
