@@ -377,6 +377,8 @@ extension Request {
 
         if let string = String(data: validData, encoding: actualEncoding) {
             return .success(string)
+        } else if actualEncoding != .ascii, let string = String(data: validData, encoding: .ascii) {
+            return .success(string)
         } else {
             return .failure(AFError.responseSerializationFailed(reason: .stringSerializationFailed(encoding: actualEncoding)))
         }
