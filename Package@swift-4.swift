@@ -1,5 +1,6 @@
+// swift-tools-version:4.0
 //
-//  Alamofire.h
+//  Package@swift-4.swift
 //
 //  Copyright (c) 2014 Alamofire Software Foundation (http://alamofire.org/)
 //
@@ -22,7 +23,19 @@
 //  THE SOFTWARE.
 //
 
-@import Foundation;
+import PackageDescription
 
-FOUNDATION_EXPORT double AlamofireVersionNumber;
-FOUNDATION_EXPORT const unsigned char AlamofireVersionString[];
+let package = Package(
+    name: "Alamofire",
+    products: [
+        .library(
+            name: "Alamofire",
+            targets: ["Alamofire"])
+    ],
+    targets: [
+        .target(
+            name: "Alamofire",
+            path: "Source")
+    ],
+    swiftLanguageVersions: [3, 4]
+)
